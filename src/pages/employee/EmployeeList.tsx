@@ -19,13 +19,13 @@ const CustomerList: React.FC = () => {
         search();
     }, [history.location.pathname]);
     
-    const search = ()=> {
-        let result = searchEmployees();
+    const search =async ()=> {
+        let result = await searchEmployees();
         setClientes(result);
 
     }
-    const remove = (id:string)=>{
-        removeEmployee(id);
+    const remove =async (id:string)=>{
+        await removeEmployee(id);
         search();
     }
     const addEmployee = () =>{

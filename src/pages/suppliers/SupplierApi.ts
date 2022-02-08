@@ -1,38 +1,44 @@
 import Supplier from "./Supplier";
 
-export const searchSuppliers = ()=>{
-    if(!localStorage['suppliers']){
-        localStorage['suppliers']= '[]';
-    }
-    
-    let suppliers = localStorage['suppliers'];
-    suppliers = JSON.parse(suppliers);
-    return suppliers;
-
-    
+export async function searchSuppliers(){
+    let url = process.env.REACT_APP_API + 'suppliers';
+    console.log(url);
+    let response = await fetch(url, {
+        "method": 'GET',
+        "headers": {
+            "Content-Type": 'application/json'
+        }
+    })
+    return await response.json();
 }
-export const removeSupplier = (id:string)=>{
-    let suppliers = searchSuppliers();
-    let indice = suppliers.findIndex((supplier:any) => supplier.id == id);
-    suppliers.splice(indice,1);
-    localStorage['suppliers'] = JSON.stringify(suppliers);
-}
-
-export const saveSupplier = (supplier:Supplier)=>{
-    let suppliers = searchSuppliers();
-    if(supplier.id){
-        let indice = suppliers.findIndex((c:Supplier) => c.id == supplier.id);
-        suppliers[indice]=supplier;
-
-    }
-    else{
-        supplier.id= String(Math.round(Math.random()*1000));
-        suppliers.push(supplier);
-    }
-    localStorage['suppliers'] = JSON.stringify(suppliers);
+export async function removeSupplier(id:string){
+    let url = process.env.REACT_APP_API + 'suppliers/'+id;
+    await fetch(url,{
+        "method":'DELETE',
+        "headers": {
+            "Content-Type": 'application/json'
+        }
+    })
 }
 
-export const searchSupplierById = (id:string)=>{
-    let suppliers = searchSuppliers();
-    return suppliers.find((supplier :any) => supplier.id ==id);
+export const saveSupplier = async (supplier:Supplier)=>{
+    let url = process.env.REACT_APP_API + 'suppliers';
+    await fetch(url,{
+        "method":'POST',
+        "body": JSON.stringify(supplier),
+        "headers": {
+            "Content-Type": 'application/json'
+        }
+    })
+}
+
+export async function searchSupplierById(id:string){
+    let url = process.env.REACT_APP_API + 'suppliers/'+id;
+    let response = await fetch(url,{
+        "method":'GET',
+        "headers": {
+            "Content-Type": 'application/json'
+        }
+    })
+    return await response.json();
 }

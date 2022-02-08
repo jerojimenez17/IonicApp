@@ -234,19 +234,45 @@ http://ionicframework.com/docs/theming/ */
     --ion-card-background: #1e1e1e;
   }
 }
-.table ion-row{
+ion-row{
 
-  font-size: 16px ;
+  font-size: 18px ;
   padding: 10px 5px;
+  font-weight: bold;
+
 }
 
-.table ion-row:nth-child(even) {
-  background: rgb(196, 196, 196);
-}
 .table ion-row:nth-child(odd) {
+  background:  rgb(239, 251, 252);
+
+  
+}
+.table ion-row:nth-child(even) {
   background: #ffffff;
 }
-.table ion-row:first-child{
-  text-transform: uppercase;
-  font-weight: bold;
+
+.itemCart{
+  height:250%;
+  width: 400%;
+  padding: 15px 20px;
+  border-color: rgb(38, 0, 141);
+}
+.itemCart ion-row{
+  font-size: 18px ;
+  padding: 5px 10px;border-bottom: #000000;
+  border-color: 5px,black;
+}
+.title{
+  margin-left: 36%;
+}
+.floatingButton{
+  position: absolute;
+  margin-top: 109px;
+  margin-left: 12px;
+}
+.description{
+  padding-right: 0px;
+}
+.marca{
+  padding-left: 50px;
 }
