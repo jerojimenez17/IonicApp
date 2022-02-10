@@ -24,10 +24,9 @@ const ProductsTaladroList: React.FC = () => {
 
     const [isInfiniteDisabled, setInfiniteDisabled] = useState(false);
     const [productToCart,setProductToCart] = useState<Product>({});
-
-
+    
     useEffect(() => {
-   
+        
         
     }, [ searchText,productToCart]);
     /* 
@@ -36,7 +35,7 @@ const ProductsTaladroList: React.FC = () => {
         setProveedores(result);
 
     }
-   const remove = async(id:string)=>{
+    const remove = async(id:string)=>{
         await removeSupplier(id);
         search();
     }
@@ -55,6 +54,9 @@ const ProductsTaladroList: React.FC = () => {
             setRowsPerPage(rowsPerPage + 100);
             ev.target.complete();
         }, 500);
+    }
+    const reloadList=()=>{
+        history.push('/page/changeList');
     }
     const addToCart= (product:Product)=>{
         let aux = productToCart;
@@ -95,9 +97,9 @@ const ProductsTaladroList: React.FC = () => {
                         <IonTitle className='title'>Lista El Taladro</IonTitle>
 
                         <IonItem>
-                            <IonButton color='primary' fill='solid' slot='end' size='default'>
+                            <IonButton color='primary' fill='solid' slot='end' size='default' onClick={reloadList}>
                                 <IonIcon icon={add} />
-                                Agregar proveedor
+                                Actualizar lista Taladro
                             </IonButton>
                         </IonItem>
                         

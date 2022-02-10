@@ -10,6 +10,7 @@ import {
     IonIcon,
     IonImg,
     IonItem,
+    IonItemDivider,
     IonLabel,
     IonList,
     IonListHeader,
@@ -22,18 +23,15 @@ import {
   } from '@ionic/react';
   
   import { useHistory, useLocation } from 'react-router-dom';
-  import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp,peopleOutline, peopleSharp, cart } from 'ionicons/icons';
+  import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp,peopleOutline, peopleSharp, cart, add } from 'ionicons/icons';
 import Product from '../../pages/products/Product';
 import { useEffect, useState } from 'react';
+import ProductCart from '../../pages/products/ProductCart';
  
-  
-interface ContainerProps {
-    product: Product;
-  }
-  
-  function Cart(props: { product: Product; }) {
-    const { product } = props;
 
+  function Cart(props: { product: ProductCart; }) {
+    const { product } = props;
+    const [amount,setAmount] = useState<number>(0);
     const [cartItems, setCartItems] = useState<Product[]>([]);
     const [suma, setSuma] = useState(0);
     const location = useLocation();
@@ -44,18 +42,21 @@ interface ContainerProps {
         Sumar(cartItems);
 
     }, [props.product,cartItems]);
-    const cargaItems = (product: Product) => {
+
+
+    const cargaItems = (product: ProductCart) => {
         if (product.description != undefined) {
             let aux = cartItems;
+            product.amount=1;
             aux.push(product)
             setCartItems(aux)
         }
     };
     const Sumar = (items: Product[]) => {
         let sum = 0;
-        items.forEach((product) => {
+        items.forEach((product:ProductCart) => {
             if (product.brand === undefined)
-                sum += Number(product.price);
+                sum += Number(product.price)* (product.amount || 1);
 
             else
                 sum += Number(product.price) * 1.5;
@@ -64,15 +65,23 @@ interface ContainerProps {
 
     };
     return (
+
         <IonGrid>
             <IonCard className='itemCart'>
                 <IonCardTitle>Compra</IonCardTitle>
-                {cartItems.map((item: Product) => <IonRow key={item.id} className='fila'>
+                {cartItems.map((item: ProductCart) => 
+                <IonRow key={item.id} className='fila'>
                     <IonCol>{item.description}</IonCol>
                     {(item.brand === undefined) ?
                         <IonCol>{item.price}</IonCol>
                         :
                         <IonCol>{Number(item.price) * 1.5}</IonCol>}
+                    <IonCol> {item.amount}</IonCol>
+                    <IonButtons>
+                        <IonButton fill='solid' color='success' onClick={()=>{console.log(amount)}}>
+                            <IonIcon icon={add}/>
+                        </IonButton>
+                    </IonButtons>
                 </IonRow>
 
 

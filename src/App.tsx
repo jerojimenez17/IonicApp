@@ -30,6 +30,7 @@ import SupplierEdit from './pages/suppliers/SupplierEdit';
 import ProductsJMList from './pages/products/ProductsJMList';
 import ProductsTaladroList from './pages/products/ProductsTaladroList';
 import Cart from './components/cart/Cart';
+import  ChangeList  from './pages/changeList/ChangeList';
 
 setupIonicReact();
 
@@ -39,7 +40,6 @@ const App: React.FC = () => {
       <IonReactHashRouter>
         <IonSplitPane contentId="main">
           <Menu />
-
           <IonRouterOutlet id="main">
             <Route path="/" exact={true}> 
               <Redirect to="/page/productsTaladro" />
@@ -68,8 +68,13 @@ const App: React.FC = () => {
             <Route path="/page/productsTaladro" exact={true}>
               <ProductsTaladroList/>
             </Route>
+            <Route path="/page/changeList" exact={true}>
+              <ChangeList/>
+           </Route>
+          
           </IonRouterOutlet>
         </IonSplitPane>
+        
       </IonReactHashRouter>
     </IonApp>
   );

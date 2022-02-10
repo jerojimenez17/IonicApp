@@ -48,6 +48,9 @@ const ProductsJMList: React.FC = () => {
         history.push('/page/supplier/'+id);
     }
     */
+    const reloadList = ()=>{
+        history.push('/page/changeList')
+    }
     const loadData = (ev: any) => {
         setTimeout(() => {
             setRowsPerPage(rowsPerPage+100);
@@ -76,8 +79,8 @@ const ProductsJMList: React.FC = () => {
 
 
                 <IonContent>
-                    <IonSearchbar value={searchText} onIonChange={(e: any) => setSearchText(e.detail.value)} placeholder="Buscar..." showCancelButton="focus"></IonSearchbar>
-                    <IonFab className='floatingButton' vertical="top" horizontal="start" edge slot="fixed">
+                    <IonSearchbar className='search-bar' value={searchText} onIonChange={(e: any) => setSearchText(e.detail.value)} placeholder="Buscar..." showCancelButton="focus"></IonSearchbar>
+                    <IonFab className='floatingButton' vertical="top" horizontal="start" edge slot="fixed" hidden={false}>
                         <IonFabButton>
                             <IonIcon icon={cart} />
                         </IonFabButton>
@@ -89,9 +92,9 @@ const ProductsJMList: React.FC = () => {
                         <IonTitle className='title'>Lista Juan Ignacio</IonTitle>
 
                         <IonItem>
-                            <IonButton color='primary' fill='solid' slot='end' size='default'>
+                            <IonButton color='primary' fill='solid' slot='end' size='default' onClick={reloadList}>
                                 <IonIcon icon={add} />
-                                Agregar proveedor
+                                Actualizar lista JM
                             </IonButton>
                         </IonItem>
 
