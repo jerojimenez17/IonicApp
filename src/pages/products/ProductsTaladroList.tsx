@@ -84,7 +84,7 @@ const ProductsTaladroList: React.FC = () => {
 
 
                 <IonContent>
-                    <IonSearchbar value={searchText} onIonChange={(e: any) => setSearchText(e.detail.value)} placeholder="Buscar..." showCancelButton="focus"></IonSearchbar>
+                    <IonSearchbar className='search-bar' value={searchText} onIonChange={(e: any) => setSearchText(e.detail.value)} placeholder="Buscar..." showCancelButton="focus"></IonSearchbar>
                     <IonFab className='floatingButton' vertical="top" horizontal="start" edge slot="fixed">
                         <IonFabButton>
                             <IonIcon icon={cart} />
