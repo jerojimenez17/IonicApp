@@ -8,10 +8,10 @@ import ExploreContainer from '../../components/ExploreContainer';
 import Product from './Product';
 
 //require('./jm.json')
-let data: Product[] = require('./jm.json');
+let data: Product[] = require('./trebol.json');
 
 
-const ProductsJMList: React.FC = () => {
+const productsTrebol: React.FC = () => {
 
     const { name } = useParams<{ name: string; }>();
 
@@ -74,7 +74,7 @@ const ProductsJMList: React.FC = () => {
                     <IonToolbar>
                         <IonTitle size="large">{name}</IonTitle>
                     </IonToolbar>
-                    <IonTitle size='large' className='title'>JM</IonTitle>
+                    <IonTitle size='large' className='title'>Trebol</IonTitle>
                 </IonHeader>
 
 
@@ -89,7 +89,7 @@ const ProductsJMList: React.FC = () => {
                         </IonFabList>
                     </IonFab>
                     <IonCard>
-                        <IonTitle className='title'>Lista Juan Ignacio</IonTitle>
+                        <IonTitle className='title'>Lista El trebol</IonTitle>
 
                         <IonItem>
                             <IonButton color='primary' fill='solid' slot='end' size='default' onClick={reloadList}>
@@ -102,7 +102,6 @@ const ProductsJMList: React.FC = () => {
                             <IonRow>
                                 <IonCol>Codigo</IonCol>
                                 <IonCol>Descripcion</IonCol>
-                                <IonCol>Marca</IonCol>
                                 <IonCol>Precio</IonCol>
                             </IonRow>
 
@@ -120,7 +119,6 @@ const ProductsJMList: React.FC = () => {
                                         <IonRow key={producto.id} className='fila'>
                                             <IonCol>{producto.cod} </IonCol>
                                             <IonCol className='description'>{producto.description}</IonCol>
-                                            <IonCol className='marca'>{producto.brand}</IonCol>
                                             <IonCol>{"$" + (Number(producto.price) * 1.5).toFixed()}</IonCol>
                                             <IonButtons>
                                                 <IonButton size='small' fill='solid' color='success'  onClick={(e)=>{
@@ -156,4 +154,4 @@ const ProductsJMList: React.FC = () => {
 };
 
 
-export default ProductsJMList;
+export default productsTrebol;

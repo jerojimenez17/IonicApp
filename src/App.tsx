@@ -31,6 +31,8 @@ import ProductsJMList from './pages/products/ProductsJMList';
 import ProductsTaladroList from './pages/products/ProductsTaladroList';
 import Cart from './components/cart/Cart';
 import  ChangeList  from './pages/changeList/ChangeList';
+import productsTrebol from './pages/products/ProductsTrebol';
+import ProductsTrebol from './pages/products/ProductsTrebol';
 
 setupIonicReact();
 
@@ -67,6 +69,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/page/productsTaladro" exact={true}>
               <ProductsTaladroList/>
+            </Route>
+            <Route path="/page/productsTebrol" exact={true}>
+              <ProductsTrebol/>
             </Route>
             <Route path="/page/changeList" exact={true}>
               <ChangeList/>

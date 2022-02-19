@@ -49,6 +49,12 @@ const appPages: AppPage[] = [
     url: '/page/productsJM',
     iosIcon: peopleOutline,
     mdIcon: peopleSharp
+  },  
+  {
+    title: 'Productos Trebol',
+    url: '/page/productsTrebol',
+    iosIcon: peopleOutline,
+    mdIcon: peopleSharp
   },
   {
     title: 'Productos Taladro',
