@@ -1,30 +1,31 @@
 import Customer from "./Customer";
 
-export async function searchCostumers(){
-    let url = process.env.REACT_APP_API + 'custmoers'
-    let response = await fetch(url,{
-        "method":"GET",
+export async function searchCustomers(){
+    let url = process.env.REACT_APP_API + 'customers';
+    console.log(url);
+    let response = await fetch(url, {
+        "method": 'GET',
         "headers": {
             "Content-Type": 'application/json'
         }
     })
-    return response.json();
+    return await response.json();
 }
-export async function removeCostumer(id:string){
-    let url = process.env.REACT_APP_API + 'custmoers/'+id;
+export async function removeCustomer(id:string){
+    let url = process.env.REACT_APP_API + 'customers/'+id;  
     await fetch(url,{
-        "method":"DELETE",
+        "method":'DELETE',
         "headers": {
             "Content-Type": 'application/json'
         }
     })
 }
 
-export const saveCostumer = async (customer:Customer)=>{
-    let url = process.env.REACT_APP_API + 'custmoers/'+customer.id
+export const saveCustomer = async (customer:Customer)=>{
+    let url = process.env.REACT_APP_API + 'customers';
     await fetch(url,{
+        "method":'POST',
         "body": JSON.stringify(customer),
-        "method":"POST",
         "headers": {
             "Content-Type": 'application/json'
         }
@@ -32,12 +33,12 @@ export const saveCostumer = async (customer:Customer)=>{
 }
 
 export async function searchCustomerById(id:string){
-    let url = process.env.REACT_APP_API + 'custmoers/'+id;
+    let url = process.env.REACT_APP_API + 'customers/'+id;
     let response = await fetch(url,{
-        "method":"GET",
+        "method":'GET',
         "headers": {
             "Content-Type": 'application/json'
         }
     })
-    return response.json();
+    return await response.json();
 }

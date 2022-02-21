@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useHistory, useParams, useRouteMatch } from 'react-router';
 import ExploreContainer from '../../components/ExploreContainer';
 import Customer from './Customer';
-import {removeCostumer, searchCostumers } from './CustomerApi';
+import {removeCustomer, searchCustomers } from './CustomerApi';
 
 
 const CustomerList: React.FC = () => {
@@ -14,20 +14,18 @@ const CustomerList: React.FC = () => {
     const [clientes,setClientes] = useState<Customer[]>([]);
     
     const history = useHistory();
-    const routeMatch:any = useRouteMatch("page/customer/:id");
-    const id = routeMatch?.params?.id;
 
     useEffect(() => {
         search();
     }, [history.location.pathname]);
     
     const search = async ()=> {
-        let result = await searchCostumers();
+        let result = await searchCustomers();
         setClientes(result);
 
     }
-    const remove = (id:string)=>{
-        removeCostumer(id);
+    const remove = async(id:string)=>{
+        await removeCustomer(id);
         search();
     }
     const addCustomer = () =>{

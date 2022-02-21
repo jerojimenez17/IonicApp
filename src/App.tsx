@@ -1,5 +1,5 @@
 import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+import { IonReactHashRouter, IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import Menu from './components/Menu';
 import Page from './pages/Page';
@@ -25,18 +25,26 @@ import './theme/variables.css';
 import CustomerEdit from './pages/customer/CustomerEdit';
 import EmployeeList from './pages/employee/EmployeeList';
 import EmployeeEdit from './pages/employee/EmployeeEdit';
+import SupplierList from './pages/suppliers/SupplierList';
+import SupplierEdit from './pages/suppliers/SupplierEdit';
+import ProductsJMList from './pages/products/ProductsJMList';
+import ProductsTaladroList from './pages/products/ProductsTaladroList';
+import Cart from './components/cart/Cart';
+import  ChangeList  from './pages/changeList/ChangeList';
+import productsTrebol from './pages/products/ProductsTrebol';
+import ProductsTrebol from './pages/products/ProductsTrebol';
 
 setupIonicReact();
 
 const App: React.FC = () => {
   return (
     <IonApp>
-      <IonReactRouter>
+      <IonReactHashRouter>
         <IonSplitPane contentId="main">
           <Menu />
           <IonRouterOutlet id="main">
             <Route path="/" exact={true}> 
-              <Redirect to="/page/customers" />
+              <Redirect to="/page/productsTaladro" />
             </Route>
             <Route path="/page/customers" exact={true}>
               <CustomerList/>
@@ -50,9 +58,29 @@ const App: React.FC = () => {
             <Route path="/page/employee/:id" exact={true}>
               <EmployeeEdit/>
             </Route>
+            <Route path="/page/suppliers" exact={true}>
+              <SupplierList/>
+            </Route>
+            <Route path="/page/supplier/:id" exact={true}>
+              <SupplierEdit/>
+            </Route>
+            <Route path="/page/productsJM" exact={true}>
+              <ProductsJMList/>
+            </Route>
+            <Route path="/page/productsTaladro" exact={true}>
+              <ProductsTaladroList/>
+            </Route>
+            <Route path="/page/productsTrebol" exact={true}>
+              <ProductsTrebol/>
+            </Route>
+            <Route path="/page/changeList" exact={true}>
+              <ChangeList/>
+           </Route>
+          
           </IonRouterOutlet>
         </IonSplitPane>
-      </IonReactRouter>
+        
+      </IonReactHashRouter>
     </IonApp>
   );
 };

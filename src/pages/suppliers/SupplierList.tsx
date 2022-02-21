@@ -1,17 +1,17 @@
 import { IonButton, IonButtons, IonCard, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonItem, IonMenuButton, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import { add, close, pencil } from 'ionicons/icons';
 import { useState, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router';
+import { useHistory, useParams, useRouteMatch } from 'react-router';
 import ExploreContainer from '../../components/ExploreContainer';
 import Supplier from './Supplier';
 import {removeSupplier, searchSuppliers } from './SupplierApi';
 
 
-const SuppliersList: React.FC = () => {
+const SupplierList: React.FC = () => {
     
     const { name } = useParams<{ name: string; }>();
 
-    const [proveedores,setClientes] = useState<Supplier[]>([]);
+    const [proveedores,setProveedores] = useState<Supplier[]>([]);
     
     const history = useHistory();
 
@@ -19,21 +19,21 @@ const SuppliersList: React.FC = () => {
         search();
     }, [history.location.pathname]);
     
-    const search = ()=> {
-        let result = searchSuppliers();
-        setClientes(result);
+    const search = async ()=> {
+        let result = await searchSuppliers();
+        setProveedores(result);
 
     }
-    const remove = (id:string)=>{
-        removeSupplier(id);
+    const remove = async(id:string)=>{
+        await removeSupplier(id);
         search();
     }
-    const addSuppliers = () =>{
-        history.push('/page/suppliers/new')
+    const addSupplier = () =>{
+        history.push('/page/supplier/new')
     }
 
-    const editSuppliers = (id:string)=> {
-        history.push('/page/suppliers/'+id);
+    const editSupplier = (id:string)=> {
+        history.push('/page/supplier/'+id);
     }
     
     return (
@@ -50,7 +50,7 @@ const SuppliersList: React.FC = () => {
             <IonContent fullscreen>
                 <IonHeader collapse="condense">
                     <IonToolbar>
-                        <IonTitle slot='end' size="large">{name}+ qu</IonTitle>
+                        <IonTitle size="large">{name}</IonTitle>
                     </IonToolbar>
                 </IonHeader>
 
@@ -58,12 +58,12 @@ const SuppliersList: React.FC = () => {
 
                 <IonContent>
                     <IonCard>
-                    <IonTitle>Gestion de Proveedores</IonTitle>
+                    <IonTitle>Gestion de proveedores</IonTitle>
 
                     <IonItem>
-                        <IonButton onClick={addSuppliers} color='primary' fill='solid' slot='end' size='default'>
+                        <IonButton onClick={addSupplier} color='primary' fill='solid' slot='end' size='default'>
                             <IonIcon icon={add}/>
-                            Agregar Proveedor
+                            Agregar proveedor
                         </IonButton>
                     </IonItem>
 
@@ -73,7 +73,6 @@ const SuppliersList: React.FC = () => {
                                 <IonCol>Email</IonCol>
                                 <IonCol>Telefono</IonCol>
                                 <IonCol>Direccion</IonCol>
-                                <IonCol>Contacto</IonCol>
                                 <IonCol>Acciones</IonCol>
                             </IonRow>
 
@@ -86,7 +85,7 @@ const SuppliersList: React.FC = () => {
                                 <IonCol>{proveedor.address}</IonCol>
                                 <IonCol>{proveedor.contact}</IonCol>
                                 <IonCol>
-                                    <IonButton onClick={()=>editSuppliers(String(proveedor.id))} color='primary' fill='clear'>
+                                    <IonButton onClick={()=>editSupplier(String(proveedor.id))} color='primary' fill='clear'>
                                         <IonIcon icon={pencil} slot='icon-only'/>
                                     </IonButton>
                                     <IonButton color='danger' fill='clear'
@@ -110,4 +109,4 @@ const SuppliersList: React.FC = () => {
     );
 };
 
-export default SuppliersList;
+export default SupplierList;
