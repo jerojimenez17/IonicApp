@@ -13,7 +13,6 @@ let data: Product[] = require('./trebol.json');
 
 const productsTrebol: React.FC = () => {
 
-    const { name } = useParams<{ name: string; }>();
 
 
     const history = useHistory();
@@ -65,14 +64,14 @@ const productsTrebol: React.FC = () => {
                     <IonButtons slot="start">
                         <IonMenuButton />
                     </IonButtons>
-                    <IonTitle>{name}</IonTitle>
+                    <IonTitle></IonTitle>
                 </IonToolbar>
             </IonHeader>
 
             <IonContent fullscreen>
                 <IonHeader collapse="condense">
                     <IonToolbar>
-                        <IonTitle size="large">{name}</IonTitle>
+                        <IonTitle size="large"></IonTitle>
                     </IonToolbar>
                     <IonTitle size='large' className='title'>Trebol</IonTitle>
                 </IonHeader>
@@ -94,7 +93,7 @@ const productsTrebol: React.FC = () => {
                         <IonItem>
                             <IonButton color='primary' fill='solid' slot='end' size='default' onClick={reloadList}>
                                 <IonIcon icon={add} />
-                                Actualizar lista JM
+                                Actualizar lista Trebol
                             </IonButton>
                         </IonItem>
 
@@ -110,7 +109,7 @@ const productsTrebol: React.FC = () => {
                                 .filter(
                                     (producto: Product) => {
 
-                                        return (producto.description?.toString().toLocaleLowerCase().includes(searchText.toLowerCase()) || (producto.cod?.toString().toLocaleLowerCase().includes(searchText.toLowerCase())|| (producto.brand?.toString().toLocaleLowerCase().includes(searchText.toLowerCase()))))
+                                        return (producto.description?.toString().toLocaleLowerCase().includes(searchText.toLowerCase()) || (producto.cod?.toString().toLocaleLowerCase().includes(searchText.toLowerCase())))
                                     })
                                 .slice(0,rowsPerPage)
                                 .map((producto: Product, id: number) =>
