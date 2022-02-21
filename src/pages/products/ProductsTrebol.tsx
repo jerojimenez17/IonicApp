@@ -11,7 +11,7 @@ import Product from './Product';
 let data: Product[] = require('./trebol.json');
 
 
-const productsTrebol: React.FC = () => {
+const ProductsTrebol: React.FC = () => {
 
 
 
@@ -118,7 +118,7 @@ const productsTrebol: React.FC = () => {
                                         <IonRow key={producto.id} className='fila'>
                                             <IonCol>{producto.cod} </IonCol>
                                             <IonCol className='description'>{producto.description}</IonCol>
-                                            <IonCol>{"$" + (Number(producto.price) * 1.5).toFixed()}</IonCol>
+                                            <IonCol>{"$" + (Number(producto.price)).toFixed()}</IonCol>
                                             <IonButtons>
                                                 <IonButton size='small' fill='solid' color='success'  onClick={(e)=>{
                                                     setProductToCart(producto)
@@ -153,4 +153,4 @@ const productsTrebol: React.FC = () => {
 };
 
 
-export default productsTrebol;
+export default ProductsTrebol;
