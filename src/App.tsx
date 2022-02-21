@@ -70,7 +70,7 @@ const App: React.FC = () => {
             <Route path="/page/productsTaladro" exact={true}>
               <ProductsTaladroList/>
             </Route>
-            <Route path="/page/productsTebrol" exact={true}>
+            <Route path="/page/productsTrebol" exact={true}>
               <ProductsTrebol/>
             </Route>
             <Route path="/page/changeList" exact={true}>
