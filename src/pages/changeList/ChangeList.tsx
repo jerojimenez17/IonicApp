@@ -16,7 +16,7 @@ const ChangeList:React.FC = () => {
     //         };
     //         reader.readAsArrayBuffer(e.target.files[0]);
         
-    
+   
   
     return (
       <IonPage>
@@ -31,9 +31,8 @@ const ChangeList:React.FC = () => {
 
           <IonButtons className='Botones' >
 
-          <IonButton fill='outline' color='primary'>
-
-          <input type= "file" accept='.xlsx' ></input>
+          <IonButton fill='outline' color='primary' >
+            
           </IonButton>
           <IonButton color='success' fill='solid'>Actualizar lista</IonButton>
           </IonButtons>
