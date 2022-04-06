@@ -1,4 +1,4 @@
-import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
+import { IonApp, IonButton, IonItemDivider, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
 import { IonReactHashRouter, IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import Menu from './components/Menu';
@@ -29,10 +29,10 @@ import SupplierList from './pages/suppliers/SupplierList';
 import SupplierEdit from './pages/suppliers/SupplierEdit';
 import ProductsJMList from './pages/products/ProductsJMList';
 import ProductsTaladroList from './pages/products/ProductsTaladroList';
-import Cart from './components/cart/Cart';
 import  ChangeList  from './pages/changeList/ChangeList';
 import productsTrebol from './pages/products/ProductsTrebol';
 import ProductsTrebol from './pages/products/ProductsTrebol';
+import CartProvider from './context/CartProvider';
 
 setupIonicReact();
 
@@ -42,7 +42,9 @@ const App: React.FC = () => {
       <IonReactHashRouter>
         <IonSplitPane contentId="main">
           <Menu />
+
           <IonRouterOutlet id="main">
+          <CartProvider>
             <Route path="/" exact={true}> 
               <Redirect to="/page/productsTaladro" />
             </Route>
@@ -76,8 +78,11 @@ const App: React.FC = () => {
             <Route path="/page/changeList" exact={true}>
               <ChangeList/>
            </Route>
+          </CartProvider>
+
           
           </IonRouterOutlet>
+          
         </IonSplitPane>
         
       </IonReactHashRouter>

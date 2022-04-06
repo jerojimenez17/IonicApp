@@ -25,13 +25,15 @@ import {
   useIonModal,
 } from "@ionic/react";
 import { add, cart, close, pencil } from "ionicons/icons";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useHistory, useParams, useRouteMatch } from "react-router";
 import Cart from "../../components/cart/Cart";
 import ExploreContainer from "../../components/ExploreContainer";
-import Product from "./Product";
+import { CartContext } from "../../context/CartContext";
+import { CartReducer } from "../../context/CartReducer";
+import Product from "../../interfaces/Product";
+import ProductCart from "../../interfaces/ProductCart";
 
-//require('./jm.json')
 let data: Product[] = require("./jm.json");
 
 const ProductsJMList: React.FC = () => {
@@ -39,14 +41,22 @@ const ProductsJMList: React.FC = () => {
 
   const history = useHistory();
 
-  const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(100);
   const [searchText, setSearchText] = useState("");
 
-  const [productToCart, setProductToCart] = useState<Product>({});
+
+  const INITIAL_STATE : Product = {
+    id: 0,
+    description: "",
+    price: "",
+    cod: '',
+  };
+
+  const [productToCart, setProductToCart] = useState<Product>(INITIAL_STATE);
   const [isInfiniteDisabled, setInfiniteDisabled] = useState(false);
 
   const [count, setCount] = useState(0);
+  const {addItem} = useContext(CartContext);
 
   const handleIncrement = () => {
     setCount(count + 1);
@@ -87,11 +97,22 @@ const ProductsJMList: React.FC = () => {
   };
 
 
-  const [present, dismiss] = useIonModal(<Cart product={productToCart}/>,{
+  const [present, dismiss] = useIonModal(<Cart />,{  
     count,
+    
     onDismiss: handleDismiss,
     onIncrement: handleIncrement,
   });
+
+
+    
+
+  const handleAddItemCart = (product: Product) => {
+    console.log("Agregando al carrito...");
+    addItem(product);
+  };
+
+
 
 
   return (
@@ -101,16 +122,16 @@ const ProductsJMList: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          {/* <div>
+          <div>
 
             <IonButton 
             onClick={() => {
             present({
               cssClass: 'modal',
             });
-          }}>Hola</IonButton>
+          }}><IonIcon icon={cart}/></IonButton>
+            
          </div>
-             */}
         </IonToolbar>
       </IonHeader>
 
@@ -134,21 +155,7 @@ const ProductsJMList: React.FC = () => {
           ></IonSearchbar>
           <div>
 
-          <IonFab
-            className="floatingButton"
-            vertical="top"
-            horizontal="start"
-            edge
-            slot="fixed"
-            hidden={false}
-          >
-            <IonFabButton>
-              <IonIcon icon={cart} />
-            </IonFabButton>
-            <IonFabList side="end">
-              <Cart product={productToCart} />
-            </IonFabList>
-          </IonFab>
+    
           <IonCard>
             <IonTitle className="title">Lista Juan Ignacio</IonTitle>
 
@@ -207,8 +214,10 @@ const ProductsJMList: React.FC = () => {
                         size="small"
                         fill="solid"
                         color="success"
-                        onClick={(e) => {
-                          setProductToCart(producto);
+                        onClick={() => {
+                          
+              
+                          handleAddItemCart(producto);
                         }}
                       >
                         <IonIcon icon={add} />
@@ -236,3 +245,5 @@ const ProductsJMList: React.FC = () => {
 };
 
 export default ProductsJMList;
+
+

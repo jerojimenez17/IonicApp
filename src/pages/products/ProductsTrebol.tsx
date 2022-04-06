@@ -5,8 +5,7 @@ import { useState, useEffect } from 'react';
 import { useHistory, useParams, useRouteMatch } from 'react-router';
 import Cart from '../../components/cart/Cart';
 import ExploreContainer from '../../components/ExploreContainer';
-import Product from './Product';
-
+import Product from "../../interfaces/Product";
 //require('./jm.json')
 let data: Product[] = require('./trebol.json');
 
@@ -22,7 +21,16 @@ const ProductsTrebol: React.FC = () => {
     const [rowsPerPage, setRowsPerPage] = useState(100);
     const [searchText, setSearchText] = useState('');
 
-    const [productToCart,setProductToCart] = useState<Product>({});
+
+    const INITIAL_STATE: Product = {
+        id: 0,
+        cod: '',
+        description: '',
+        price: '',
+    }
+    const [productToCart,setProductToCart] = useState<Product>(INITIAL_STATE);
+
+    
     const [isInfiniteDisabled, setInfiniteDisabled] = useState(false);
 
 
@@ -79,14 +87,7 @@ const ProductsTrebol: React.FC = () => {
 
                 <IonContent>
                     <IonSearchbar className='search-bar' value={searchText} onIonChange={(e: any) => setSearchText(e.detail.value)} placeholder="Buscar..." showCancelButton="focus"></IonSearchbar>
-                    <IonFab className='floatingButton' vertical="top" horizontal="start" edge slot="fixed" hidden={false}>
-                        <IonFabButton>
-                            <IonIcon icon={cart} />
-                        </IonFabButton>
-                        <IonFabList side="end">
-                            <Cart product={productToCart}/>
-                        </IonFabList>
-                    </IonFab>
+
                     <IonCard>
                         <IonTitle className='title'>Lista El trebol</IonTitle>
 
