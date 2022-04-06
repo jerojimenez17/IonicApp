@@ -2,6 +2,62 @@
 http://ionicframework.com/docs/theming/ */
 
 /** Ionic CSS Variables **/
+
+.fila{ 
+
+  font-size: 16px ;
+  padding: 10px 5px;
+  font-weight: bold;
+
+}
+.search-bar{ 
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  height: 10%;
+  font-size: medium;
+  text-align: center;
+}
+ ion-row:nth-child(odd) {
+  background:  rgb(239, 251, 252);
+
+  
+}
+ ion-row:nth-child(even) {
+  background: #ffffff;
+}
+.itemCart{
+  height: "1000px";
+  width: "100px";
+  padding: 0;
+}
+.itemCart ion-row{
+  font-size: 18px ;
+  padding: 5px 10px;}
+.title{
+  text-align: center;
+  font-weight: bold;
+
+}
+.floatingButton{
+  margin-top: 7rem;
+  margin-left: 0.5rem;
+}
+.description{
+  padding-right: 0px;
+}
+.marca{
+  padding-left: 50px;
+}
+.Botones{
+  position: relative;
+  
+  margin: 0;
+  padding:0;
+}
+.title-card{
+  text-align: center;
+}
 :root {
   /** primary **/
   --ion-color-primary: #3880ff;
@@ -233,60 +289,4 @@ http://ionicframework.com/docs/theming/ */
 
     --ion-card-background: #1e1e1e;
   }
-}
-.fila{ 
-
-  font-size: 18px ;
-  padding: 10px 5px;
-  font-weight: bold;
-
-}
-.search-bar{ 
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  height: 10%;
-  font-size: medium;
-  text-align: center;
-}
- ion-row:nth-child(odd) {
-  background:  rgb(239, 251, 252);
-
-  
-}
- ion-row:nth-child(even) {
-  background: #ffffff;
-}
-
-.itemCart{
-  height:auto;
-  width: auto;
-  padding: 0;
-}
-.divider{
-  height: 0;
-}
-.itemCart ion-row{
-  font-size: 18px ;
-  padding: 5px 10px;}
-.title{
-  text-align: center;
-  font-weight: bold;
-
-}
-.floatingButton{
-  margin-top: 7rem;
-  margin-left: 0.5rem;
-}
-.description{
-  padding-right: 0px;
-}
-.marca{
-  padding-left: 50px;
-}
-.Botones{
-  position: relative;
-  
-  margin: 0;
-  padding:0;
 }
