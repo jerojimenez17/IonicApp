@@ -5,7 +5,7 @@ import ProductCart from "../interfaces/ProductCart";
 
 export default interface CartContextProps{
     cartState: CartState;
-    addItem: (product: Product) => void;
+    addItem: (product: Product) =>  void;
 }
 
 

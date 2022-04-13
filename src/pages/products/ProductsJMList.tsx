@@ -30,7 +30,9 @@ import { useHistory, useParams, useRouteMatch } from "react-router";
 import Cart from "../../components/cart/Cart";
 import ExploreContainer from "../../components/ExploreContainer";
 import { CartContext } from "../../context/CartContext";
+import CartProvider from "../../context/CartProvider";
 import { CartReducer } from "../../context/CartReducer";
+import CartState from "../../interfaces/CartState";
 import Product from "../../interfaces/Product";
 import ProductCart from "../../interfaces/ProductCart";
 
@@ -56,7 +58,7 @@ const ProductsJMList: React.FC = () => {
   const [isInfiniteDisabled, setInfiniteDisabled] = useState(false);
 
   const [count, setCount] = useState(0);
-  const {addItem} = useContext(CartContext);
+  const {addItem, cartState} = useContext(CartContext);
 
   const handleIncrement = () => {
     setCount(count + 1);
@@ -97,7 +99,7 @@ const ProductsJMList: React.FC = () => {
   };
 
 
-  const [present, dismiss] = useIonModal(<Cart />,{  
+  const [present, dismiss] = useIonModal(<CartProvider><Cart /></CartProvider>,{  
     count,
     
     onDismiss: handleDismiss,

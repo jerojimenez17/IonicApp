@@ -33,6 +33,7 @@ import  ChangeList  from './pages/changeList/ChangeList';
 import productsTrebol from './pages/products/ProductsTrebol';
 import ProductsTrebol from './pages/products/ProductsTrebol';
 import CartProvider from './context/CartProvider';
+import Cart from './components/cart/Cart';
 
 setupIonicReact();
 
@@ -40,11 +41,12 @@ const App: React.FC = () => {
   return (
     <IonApp>
       <IonReactHashRouter>
+          <CartProvider>
         <IonSplitPane contentId="main">
           <Menu />
 
           <IonRouterOutlet id="main">
-          <CartProvider>
+            
             <Route path="/" exact={true}> 
               <Redirect to="/page/productsTaladro" />
             </Route>
@@ -78,12 +80,12 @@ const App: React.FC = () => {
             <Route path="/page/changeList" exact={true}>
               <ChangeList/>
            </Route>
-          </CartProvider>
 
           
           </IonRouterOutlet>
           
         </IonSplitPane>
+          </CartProvider>
         
       </IonReactHashRouter>
     </IonApp>
