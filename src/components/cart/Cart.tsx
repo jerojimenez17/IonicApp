@@ -42,23 +42,26 @@ function Cart() {
 
   const { cartState} = useContext(CartContext);
   useEffect(() => {
-    
-  }, [cartState]);
+    console.log(cartState) 
+  }, []);
 
   
   return (
-    <CartProvider>
       <IonCard className="itemCart">
         <IonCardTitle className="title-card" color="primary" mode="ios">
           Compra
         </IonCardTitle>
         <IonItemDivider />
-{/*     
-        {cartState.products.map((product) => (
-          // <CartItems
-          //   key={product.id}  product={product}/>
-          <IonItem>Hola</IonItem>
-        ))} */}
+    
+        {
+        
+        cartState.products?.map((product) => 
+          <CartItems product={product}/>
+            
+          
+        
+        
+        ) }
         <IonItemDivider />
         <IonButtons>
           <IonButton color="success" size="default" fill="solid">
@@ -69,7 +72,7 @@ function Cart() {
           </IonButton>
         </IonButtons>
       </IonCard>
-    </CartProvider>
+  
   );
 }
 

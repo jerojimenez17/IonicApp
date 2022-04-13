@@ -26,11 +26,11 @@ const CartProvider = ({children}:props ) => {
     const addItem = (product:Product) => {
         dispatch({
             type: 'addItem',
-           payload: product
+           payload: product,
       });
     };
   return (
-    <CartContext.Provider value={{ cartState, addItem}}>
+    <CartContext.Provider value={{ cartState:cartState, addItem: addItem}}>
         {children}
     </CartContext.Provider>
   )

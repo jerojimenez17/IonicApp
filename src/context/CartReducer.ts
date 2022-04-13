@@ -14,9 +14,11 @@ type CartAction =
 
 
 export const CartReducer = (state: CartState, action: CartAction): CartState => {
+    console.log(action)
     switch(action.type){
          case 'addItem':
 
+    console.log(state)
              return {
                  ...state,
                  products: [...state.products, action.payload],
