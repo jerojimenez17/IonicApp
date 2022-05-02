@@ -34,6 +34,7 @@ import productsTrebol from './pages/products/ProductsTrebol';
 import ProductsTrebol from './pages/products/ProductsTrebol';
 import CartProvider from './context/CartProvider';
 import Cart from './components/cart/Cart';
+import ProductsCerrajeria from './pages/products/ProductsCerrajeria';
 
 setupIonicReact();
 
@@ -76,6 +77,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/page/productsTrebol" exact={true}>
               <ProductsTrebol/>
+            </Route>
+            <Route path="/page/productsCerrajeria" exact={true}>
+              <ProductsCerrajeria/>
             </Route>
             <Route path="/page/changeList" exact={true}>
               <ChangeList/>

@@ -61,6 +61,12 @@ const appPages: AppPage[] = [
     url: '/page/productsTaladro',
     iosIcon: peopleOutline,
     mdIcon: peopleSharp
+  },
+  {
+    title: 'Productos Cerrajeria',
+    url: '/page/productsCerrajeria',
+    iosIcon: peopleOutline,
+    mdIcon: peopleSharp
   }
 ];
 
