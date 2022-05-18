@@ -99,13 +99,15 @@ const ProductsJMList: React.FC = () => {
   };
 
 
-  const [present, dismiss] = useIonModal(<CartProvider><Cart /></CartProvider>,{  
+  const [present, dismiss] = useIonModal(<Cart />,{  
     count,
     
     onDismiss: handleDismiss,
     onIncrement: handleIncrement,
   });
-
+  const openCart = () => {
+    history.push("/page/cart");
+  };
 
     
 
@@ -127,11 +129,8 @@ const ProductsJMList: React.FC = () => {
           <div>
 
             <IonButton 
-            onClick={() => {
-            present({
-              cssClass: 'modal',
-            });
-          }}><IonIcon icon={cart}/></IonButton>
+             onClick={openCart}
+          ><IonIcon icon={cart}/></IonButton>
             
          </div>
         </IonToolbar>
