@@ -3,16 +3,26 @@ import { IonButton, IonButtons, IonCard, IonCol, IonContent, IonFab, IonFabButto
 import { add, car, cart, close, logoVimeo, pencil } from 'ionicons/icons';
 import { useState, useEffect } from 'react';
 import { useHistory, useParams, useRouteMatch } from 'react-router';
+
 import Cart from '../../components/cart/Cart';
 import ExploreContainer from '../../components/ExploreContainer';
 import Product from "../../interfaces/Product";
+import fetchProducts from '../../services/productService';
 
-
-const data: Product[] = require('./Taladro.json');
+const data:Product[] = require('./Taladro.json');
 const ProductsTaladroList: React.FC = () => {
 
     const { name } = useParams<{ name: string; }>();
 
+    const [products, setProducts] = useState<Product[]>([]);
+
+    const [productsListName, setProductListName] = useState<string>("taladro");
+
+    useEffect(() => {
+        fetchProducts(productsListName).then(productsWS =>
+            setProducts(productsWS)
+        );
+    }, [productsListName]);
 
     const history = useHistory();
 
@@ -30,11 +40,7 @@ const ProductsTaladroList: React.FC = () => {
         description: '',
         price: '',}
     const [productToCart,setProductToCart] = useState<Product>(INITIAL_STATE);
-    
-    useEffect(() => {
-        
-        
-    }, [ searchText,productToCart]);
+     
     /* 
     const search = async ()=> {
         let result = await searchSuppliers();
@@ -109,8 +115,7 @@ const ProductsTaladroList: React.FC = () => {
                                 <IonCol>Codigo</IonCol>
                                 <IonCol>Descripcion</IonCol>
                                 <IonCol>Precio</IonCol>
-                            </IonRow>
-
+                            </IonRow> 
                             {
                              data
                                
@@ -125,7 +130,7 @@ const ProductsTaladroList: React.FC = () => {
                                 .map((producto: Product, id: number) =>
     
 
-                                        <IonRow key={producto.id} className="fila" >
+                                        <IonRow key={producto.cod.toString()} className="fila" >
                                             <IonCol >{producto.cod} </IonCol>
                                             <IonCol>{producto.description}</IonCol>
                                             <IonCol>{"$" + Number(producto.price).toFixed()}</IonCol>

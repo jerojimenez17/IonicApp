@@ -17,6 +17,7 @@ import {
   IonMenu,
   IonMenuToggle,
   IonNote,
+  IonPage,
   IonRow,
   IonSplitPane,
   IonTitle,
@@ -47,6 +48,8 @@ function Cart() {
 
   
   return (
+    <IonPage>
+
       <IonCard className="itemCart">
         <IonCardTitle className="title-card" color="primary" mode="ios">
           Compra
@@ -54,11 +57,10 @@ function Cart() {
         <IonItemDivider />
     
         {
-        
-        cartState.products?.map((product) => 
-          <CartItems product={product}/>
-            
           
+        cartState.products?.map((product) => 
+        <CartItems product={product}/>
+        
         
         
         ) }
@@ -72,6 +74,7 @@ function Cart() {
           </IonButton>
         </IonButtons>
       </IonCard>
+        </IonPage>
   
   );
 }
