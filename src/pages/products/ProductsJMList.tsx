@@ -173,13 +173,13 @@ const ProductsJMList: React.FC = () => {
               </IonButton>
             </IonItem>
 
-            <IonGrid className="table">
-              <IonRow>
+            <IonList className="table">
+              <IonItem>
                 <IonCol>Codigo</IonCol>
                 <IonCol>Descripcion</IonCol>
                 <IonCol>Marca</IonCol>
                 <IonCol>Precio</IonCol>
-              </IonRow>
+              </IonItem>
 
               {data
 
@@ -201,7 +201,7 @@ const ProductsJMList: React.FC = () => {
                 })
                 .slice(0, rowsPerPage)
                 .map((producto: Product, id: number) => (
-                  <IonRow key={producto.id} className="fila">
+                  <IonItem key={producto.id} className="fila">
                     <IonCol>{producto.cod} </IonCol>
                     <IonCol className="description">
                       {producto.description}
@@ -224,7 +224,7 @@ const ProductsJMList: React.FC = () => {
                         <IonIcon icon={add} />
                       </IonButton>
                     </IonButtons>
-                  </IonRow>
+                  </IonItem>
                 ))}
               <IonInfiniteScroll
                 onIonInfinite={loadData}
@@ -236,7 +236,7 @@ const ProductsJMList: React.FC = () => {
                   loadingText="Cargando Productos..."
                 ></IonInfiniteScrollContent>
               </IonInfiniteScroll>
-            </IonGrid>
+            </IonList>
           </IonCard>
         </div>
         </IonContent>
