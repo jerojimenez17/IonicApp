@@ -98,12 +98,12 @@ const ProductsTrebol: React.FC = () => {
                             </IonButton>
                         </IonItem>
 
-                        <IonGrid className='table' >
-                            <IonRow>
+                        <IonList className='table' >
+                            <IonItem onClick={()=>console.log("hola")}>
                                 <IonCol>Codigo</IonCol>
                                 <IonCol>Descripcion</IonCol>
                                 <IonCol>Precio</IonCol>
-                            </IonRow>
+                            </IonItem>
 
                             {data
 
@@ -116,7 +116,7 @@ const ProductsTrebol: React.FC = () => {
                                 .map((producto: Product, id: number) =>
 
 
-                                        <IonRow key={producto.id} className='fila'>
+                                        <IonItem key={producto.id} className='fila'>
                                             <IonCol>{producto.cod} </IonCol>
                                             <IonCol className='description'>{producto.description}</IonCol>
                                             <IonCol>{"$" + (Number(producto.price)).toFixed()}</IonCol>
@@ -129,7 +129,7 @@ const ProductsTrebol: React.FC = () => {
                                                 </IonButton>
                                             </IonButtons>
                                         
-                                        </IonRow>
+                                        </IonItem>
 
 
                                 )
@@ -145,7 +145,7 @@ const ProductsTrebol: React.FC = () => {
                                 loadingText="Cargando Productos..."
                             ></IonInfiniteScrollContent>
                             </IonInfiniteScroll>
-                        </IonGrid>
+                        </IonList>
                     </IonCard>
                 </IonContent>
             </IonContent>

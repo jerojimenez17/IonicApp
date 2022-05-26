@@ -108,7 +108,7 @@ const ProductsTaladroList: React.FC = () => {
                             </IonButton>
                         </IonItem>
                         
-                        <IonList className='table'>
+                        <IonList className='table' color='inherit'>
                    
                         
                             <IonItem>

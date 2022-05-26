@@ -173,7 +173,7 @@ const ProductsJMList: React.FC = () => {
               </IonButton>
             </IonItem>
 
-            <IonList className="table">
+            <IonList className="table" color='inherit'>
               <IonItem>
                 <IonCol>Codigo</IonCol>
                 <IonCol>Descripcion</IonCol>
