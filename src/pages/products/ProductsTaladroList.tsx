@@ -108,14 +108,14 @@ const ProductsTaladroList: React.FC = () => {
                             </IonButton>
                         </IonItem>
                         
-                        <IonGrid className='table'>
+                        <IonList className='table'>
                    
                         
-                            <IonRow>
+                            <IonItem>
                                 <IonCol>Codigo</IonCol>
                                 <IonCol>Descripcion</IonCol>
                                 <IonCol>Precio</IonCol>
-                            </IonRow> 
+                            </IonItem> 
                             {
                              data
                                
@@ -130,7 +130,7 @@ const ProductsTaladroList: React.FC = () => {
                                 .map((producto: Product, id: number) =>
     
 
-                                        <IonRow key={producto.cod.toString()} className="fila" >
+                                        <IonItem key={producto.cod.toString()} className="fila" >
                                             <IonCol >{producto.cod} </IonCol>
                                             <IonCol>{producto.description}</IonCol>
                                             <IonCol>{"$" + Number(producto.price).toFixed()}</IonCol>
@@ -143,7 +143,7 @@ const ProductsTaladroList: React.FC = () => {
                                                 </IonButton>
                                             </IonButtons>
                                         
-                                        </IonRow>
+                                        </IonItem>
                                 
 
                                 )}
@@ -158,7 +158,7 @@ const ProductsTaladroList: React.FC = () => {
                                     loadingText="Cargando Productos..."
                                 ></IonInfiniteScrollContent>
                             </IonInfiniteScroll>
-                        </IonGrid>
+                        </IonList>
                     </IonCard>
                 </IonContent>
 

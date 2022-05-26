@@ -98,14 +98,14 @@ const ProductsCerrajeria: React.FC = () => {
                             </IonButton>
                         </IonItem>
 
-                        <IonGrid className='table' >
-                            <IonRow>
+                        <IonList className='table' >
+                            <IonItem>
                                 <IonCol>Codigo</IonCol>
                                 <IonCol>Codigo Real</IonCol>
                                 <IonCol>Descripcion</IonCol>
                                 <IonCol>Precio</IonCol>
 
-                            </IonRow>
+                            </IonItem>
 
                             {data
 
@@ -118,7 +118,7 @@ const ProductsCerrajeria: React.FC = () => {
                                 .map((producto: Product, id: number) =>
 
 
-                                        <IonRow key={producto.id} className='fila'>
+                                        <IonItem key={producto.id} className='fila'>
                                             <IonCol>{producto.cod} </IonCol>
                                             <IonCol>{producto.codReal}</IonCol>
                                             <IonCol className='description'>{producto.description}</IonCol>
@@ -132,7 +132,7 @@ const ProductsCerrajeria: React.FC = () => {
                                                 </IonButton>
                                             </IonButtons>
                                         
-                                        </IonRow>
+                                        </IonItem>
 
 
                                 )
@@ -148,7 +148,7 @@ const ProductsCerrajeria: React.FC = () => {
                                 loadingText="Cargando Productos..."
                             ></IonInfiniteScrollContent>
                             </IonInfiniteScroll>
-                        </IonGrid>
+                        </IonList>
                     </IonCard>
                 </IonContent>
             </IonContent>
